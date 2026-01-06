@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="denemepro.Pages.HomePage"
+             Title="Listings">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="OnAddClicked" />
+        <ToolbarItem Text="Logout" Clicked="OnLogoutClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12" Spacing="10">
+
+            <Frame Padding="12">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Filter" FontSize="18" />
+
+                    <Entry x:Name="CityEntry" Placeholder="City (optional)" />
+                    <Entry x:Name="MaxRentEntry" Placeholder="Max Rent (optional)" Keyboard="Numeric" />
+                    <Entry x:Name="MaxMinEntry" Placeholder="Max Campus Minutes (optional)" Keyboard="Numeric" />
+
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Label Text="Furnished only" VerticalOptions="Center" />
+                        <Switch x:Name="FurnishedOnlySwitch" />
+                    </HorizontalStackLayout>
+
+                    <Picker x:Name="CategoryPicker" Title="Category" />
+
+                    <Button Text="Apply Filter" Clicked="OnApplyFilterClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <CollectionView x:Name="ListingsView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,6" Padding="10">
+                            <Grid ColumnDefinitions="90,*" RowDefinitions="Auto,Auto,Auto">
+                                <Image Grid.RowSpan="3" WidthRequest="80" HeightRequest="80" Aspect="AspectFill"
+                                       Source="{Binding ImageFile}" />
+
+                                <Label Grid.Column="1" Text="{Binding Title}" FontSize="18" />
+                                <Label Grid.Column="1" Grid.Row="1"
+                                       Text="{Binding City}" />
+                                <Label Grid.Column="1" Grid.Row="2"
+                                       Text="{Binding Rent, StringFormat='Rent: {0}'}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

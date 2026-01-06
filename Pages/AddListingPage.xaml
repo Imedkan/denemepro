@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="denemepro.Pages.AddListingPage"
+             Title="Add Listing">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Entry x:Name="TitleEntry" Placeholder="Title" />
+            <Entry x:Name="DescEntry" Placeholder="Short description" />
+
+            <Entry x:Name="CityEntry" Placeholder="City" />
+            <Entry x:Name="DistrictEntry" Placeholder="District" />
+
+            <Entry x:Name="RentEntry" Placeholder="Rent (number)" Keyboard="Numeric" />
+            <Entry x:Name="MinEntry" Placeholder="Campus minutes (number)" Keyboard="Numeric" />
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Label Text="Furnished" VerticalOptions="Center" />
+                <Switch x:Name="FurnishedSwitch" />
+            </HorizontalStackLayout>
+
+            <Picker x:Name="CategoryPicker" Title="Category" />
+            <Picker x:Name="ImagePicker" Title="Image" />
+
+            <Button Text="Save" Clicked="OnSaveClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
