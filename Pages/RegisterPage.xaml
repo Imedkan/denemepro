@@ -9,6 +9,7 @@
             <Label Text="Create Account" FontSize="22" />
 
             <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+            <Entry x:Name="PhoneEntry" Placeholder="Phone" Keyboard="Telephone" />
             <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
             <Entry x:Name="Password2Entry" Placeholder="Password again" IsPassword="True" />
 

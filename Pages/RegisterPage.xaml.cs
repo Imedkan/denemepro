@@ -10,6 +10,7 @@ public partial class RegisterPage : ContentPage
     private async void OnCreateClicked(object sender, EventArgs e)
     {
         var email = EmailEntry.Text ?? "";
+        var phone = PhoneEntry.Text ?? "";
         var p1 = PasswordEntry.Text ?? "";
         var p2 = Password2Entry.Text ?? "";
 
@@ -19,7 +20,7 @@ public partial class RegisterPage : ContentPage
             return;
         }
 
-        var result = await App.Db.RegisterAsync(email, p1);
+        var result = await App.Db.RegisterAsync(email, p1, phone);
         if (!result.Ok)
         {
             await DisplayAlert("Error", result.Error, "OK");

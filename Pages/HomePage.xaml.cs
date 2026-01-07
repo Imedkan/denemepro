@@ -80,4 +80,18 @@ public partial class HomePage : ContentPage
         App.CurrentUser = null;
         Application.Current!.MainPage = new NavigationPage(new LoginPage());
     }
+
+    private async void OnListingSelected(object sender, SelectionChangedEventArgs e)
+    {
+        var listing = e.CurrentSelection.FirstOrDefault() as Listing;
+        if (listing == null) return;
+
+        var owner = await App.Db.GetUserByIdAsync(listing.OwnerUserId);
+        var phone = owner?.Phone ?? "Not found";
+
+        await DisplayAlert("Contact", phone, "OK");
+
+        ListingsView.SelectedItem = null;
+    }
+
 }
